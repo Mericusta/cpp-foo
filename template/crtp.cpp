@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 template <typename T>
 class Animal {
@@ -27,12 +28,20 @@ void Call(Animal<T>& animal) {
     animal.eat();
 }
 
+template<typename T>
+void Insert(Animal<T>& animal, ...) {
+    auto v = new std::vector<Animal<T>>();
+    v->push_back(animal);
+}
+
 int main() {
     Lion lion;
     Cat cat;
 
     Call(lion);
     Call(cat);
+
+    Insert(lion, cat);
     
     return 0;
 }
